@@ -1,16 +1,25 @@
-import { useState } from 'react'
-import './App.css'
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom"
+import ChatHome from "./components/chat/ChatHome"
+import ChatThread from "./components/chat/ChatThread"
+import VideoRoom from "./components/video/VideoRoom"
+import Layout from "./layouts/Layout"
+import LoginPage from "./pages/LoginPage"
 
-function App() {
-  const [count, setCount] = useState(0)
+export default function App() {
 
   return (
     <>
-      <button onClick={() => {   
-        setCount(count === 300 ? 0 : count + 100)       
-        } }>Count is {count}</button>
+    <Router>
+      <Routes>
+            <Route path="/" element={<LoginPage />} />
+        <Route element={<Layout/>}>
+            <Route path="/chat" element={<ChatHome />} />
+            <Route path="/chat/:userId" element={<ChatThread />} />
+            <Route path="/meet" element={<VideoRoom />} />
+        </Route>  
+      </Routes>
+    </Router>
     </>
   )
 } 
 
-export default App
