@@ -4,15 +4,17 @@ import ChatThread from "./components/chat/ChatThread"
 import VideoRoom from "./components/video/VideoRoom"
 import Layout from "./layouts/Layout"
 import LoginPage from "./pages/LoginPage"
+import { Toaster } from "react-hot-toast"
 
 export default function App() {
 
   return (
     <>
+    <Toaster position="top-center" />
     <Router>
       <Routes>
             <Route path="/" element={<LoginPage />} />
-        <Route element={<Layout/>}>
+            <Route element={<Layout/>}>
             <Route path="/chat" element={<ChatHome />} />
             <Route path="/chat/:userId" element={<ChatThread />} />
             <Route path="/meet" element={<VideoRoom />} />

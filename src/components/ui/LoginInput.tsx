@@ -17,10 +17,12 @@ export default function LoginInput(){
       await new Promise((resolve, reject) => {
         setTimeout(() => {
           if (email === "user@test.com" && password === "123456") {
-            resolve("Success");
+            // resolve("Success");
+            navigate('/chat')
           } else {
-            reject("Invalid credentials");
-          }
+            reject();
+            toast.error('err')
+          } 
         }, 1000);
       });
 
@@ -32,7 +34,7 @@ export default function LoginInput(){
     }
 
     return (
-        <div className=" border-2  flex p-2 items-center justify-center w-[400px] h-[400px]">
+        <div className=" border-2  flex p-2 items-center justify-center w-[400px] h-[400px]">        
             <div className="flex flex-col gap-2">
               <input type="email"  placeholder="email" value={email} onChange={(e) => setEmail(e.target.value)} className="!p-4 w-[300px]"/>
               <input type="password"  placeholder="password" value={password} onChange={(e) => setPassword(e.target.value)} className="!p-4 w-[300px]" />
