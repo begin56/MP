@@ -17,7 +17,7 @@ export default function LoginInput(){
       await new Promise((resolve, reject) => {
         setTimeout(() => {
           if (email === "user@test.com" && password === "123456") {
-            // resolve("Success");
+            resolve("Success");  
             navigate('/chat')
           } else {
             reject();
